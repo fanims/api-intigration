@@ -65,8 +65,8 @@ const AddSystemDetails = () => {
                         <p className="py-1.5"><strong className="inline-block w-[200px]">Name:</strong>{name}</p>
                         <p className="py-1.5"><strong className="inline-block w-[200px]">Year:</strong>{year}</p>
                         <p className="py-1.5"><strong className="inline-block w-[200px]">Price:</strong>{price}</p>
-                        <p className="py-1.5"><strong className="inline-block w-[200px]">Model:</strong>{model}</p>
-                        <p className="py-1.5"><strong className="inline-block w-[200px]">Disk Size:</strong>{diskSize}</p>
+                        <p className="py-1.5"><strong className="inline-block w-[200px]">CPU Model:</strong>{model}</p>
+                        <p className="py-1.5"><strong className="inline-block w-[200px]">Hard Disk Size:</strong>{diskSize}</p>
                     </div>
                 </div>
             </div>
