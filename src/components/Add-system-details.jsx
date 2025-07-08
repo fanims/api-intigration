@@ -14,12 +14,13 @@ const AddSystemDetails = () => {
         const addData = {
             name,
             data: {
-                color,
-                capacity,
-                price
+                "year": year,
+                "price": price,
+                "cpuModel": model,
+                "hardDisk": diskSize
             }
         }
-        const result = await axios.post(constants.Base_URL, addData)
+        const result = await axios.post(constants.Base_URL+"/object", addData)
     }
 
 
