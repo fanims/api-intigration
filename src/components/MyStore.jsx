@@ -32,7 +32,11 @@ const MyStore = () => {
             <h2 className="text-2xl font-bold mb-4 text-center">Product List</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {data.map((product, index) => (
-                    <div className="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer" key={index} onClick={() =>  setId (product?.id)}>
+                    <div 
+                        key={index} 
+                        onClick={() => setId (product?.id)}
+                        className="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer" 
+                    >
                         <img src={product?.image} alt="Product" className="w-full h-[400px] object-contain rounded" />
                         <h3 className="mt-2 text-lg font-semibold text-gray-800">{product?.title}</h3>
                         <p className="text-blue-600 font-bold mt-1">{product?.price}</p>
