@@ -1,14 +1,15 @@
 import axios from "axios"
 import * as constants from "../constants/Constants"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 
 const MyStore = () => {
 
+    const navigate = useNavigate ()
     const [data, setData] = useState([])
     const [id, setId] = useState("")
-    const [selectProduct, setSelectProduct] = useState({})
 
     const getData = async () => {
         const result = await axios.get(constants.MyStore_URL+"/products")
@@ -16,9 +17,14 @@ const MyStore = () => {
     }
     const selectedProduct = async () => {
         const response = await axios.get(`${constants?.MyStore_URL}/products/${id}`)
-        setSelectProduct(response?.data)
+        if(id) {
+            localStorage.setItem("product", JSON.stringify(response?.data))
+            navigate("/checkout")
+        }
+
     }
     
+
     useEffect(() => {
         getData()
     }, [])
@@ -32,7 +38,7 @@ const MyStore = () => {
             <h2 className="text-2xl font-bold mb-4 text-center">Product List</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {data.map((product, index) => (
-                    <div 
+                    <div
                         key={index} 
                         onClick={() => setId (product?.id)}
                         className="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer" 
@@ -48,26 +54,6 @@ const MyStore = () => {
                 ))}
             </div>
         </div>
-
-        {selectProduct ? 
-            <div className="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/2">
-                    <img src={selectProduct?.image} alt="Product Detail" className="w-full h-[400px] object-contain rounded" />
-                </div>
-                <div className="md:w-1/2 space-y-4">
-                    <h2 className="text-2xl font-bold text-gray-800">{selectProduct?.title}</h2>
-                    <p className="text-xl text-blue-600 font-semibold">{selectProduct?.price}</p>
-                    <p className="text-gray-700">{selectProduct?.description}</p>
-                    <p className="font-semibold text-gray-800">{selectProduct?.category}</p>
-                    <div className="flex items-center justify-between mt-1">
-                        <strong>Rateing: {selectProduct?.rating?.rate}</strong>
-                        <span>Count: {selectProduct?.rating?.count}</span>
-                    </div>
-                </div>
-            </div>
-        :
-            <p>No more product</p>
-        }
     </div>
 
   )
