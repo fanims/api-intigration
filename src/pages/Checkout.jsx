@@ -17,17 +17,16 @@ const Checkout = () => {
     
 return (
     <div className="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6">
-        <div className="md:w-1/2">
-            <img src={selectProduct?.image} alt="Product Detail" className="w-full h-[400px] object-contain rounded" />
-        </div>
         <div className="md:w-1/2 space-y-4">
             <h2 className="text-2xl font-bold text-gray-800">{selectProduct?.title}</h2>
-            <p className="text-xl text-blue-600 font-semibold">{selectProduct?.price}</p>
             <p className="text-gray-700">{selectProduct?.description}</p>
-            <p className="font-semibold text-gray-800">{selectProduct?.category}</p>
             <div className="flex items-center justify-between mt-1">
-                <strong>Rateing: {selectProduct?.rating?.rate}</strong>
-                <span>Count: {selectProduct?.rating?.count}</span>
+                <div className="block">
+                    <strong>Category: </strong><span>{selectProduct?.category}</span>
+                </div>
+                <div className="block">
+                    <strong>Price: </strong><span>{selectProduct?.price}</span>
+                </div>
             </div>
         </div>
     </div>

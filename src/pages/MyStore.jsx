@@ -12,8 +12,9 @@ const MyStore = () => {
     const [id, setId] = useState("")
 
     const getData = async () => {
-        const result = await axios.get(constants.MyStore_URL+"/products")
-        setData (result?.data)
+        const result = await axios.get(`${constants?.MyStore_URL}/products`)
+        setData (result?.data?.products)
+        console.log(result?.data?.products)
     }
     const selectedProduct = async () => {
         const response = await axios.get(`${constants?.MyStore_URL}/products/${id}`)
@@ -30,7 +31,9 @@ const MyStore = () => {
     }, [])
     
     useEffect(() => {
-        selectedProduct()
+        if(id) {
+            selectedProduct()
+        }
     }, [id])
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-10 mt-10">
@@ -43,12 +46,15 @@ const MyStore = () => {
                         onClick={() => setId (product?.id)}
                         className="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer" 
                     >
-                        <img src={product?.image} alt="Product" className="w-full h-[400px] object-contain rounded" />
                         <h3 className="mt-2 text-lg font-semibold text-gray-800">{product?.title}</h3>
-                        <p className="text-blue-600 font-bold mt-1">{product?.price}</p>
+                        <p className="text-gray-800 font-bold mt-1">{product?.description}</p>
                         <div className="flex items-center justify-between mt-1">
-                            <strong>Rateing: {product?.rating?.rate}</strong>
-                            <span>Count: {product?.rating?.count}</span>
+                            <div className="block">
+                                <strong>Category: </strong><span>{product?.category}</span>
+                            </div>
+                            <div className="block">
+                                <strong>Price: </strong><span>{product?.price}</span>
+                            </div>
                         </div>
                     </div>
                 ))}
