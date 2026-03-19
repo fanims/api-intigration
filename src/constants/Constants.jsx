@@ -1,4 +1,7 @@
 export  const Base_URL =  "https://api.restful-api.dev"
 export  const MyStore_URL =  "https://dummyjson.com"
 export  const MyPets_URL =  "https://dog.ceo"
+export  const Mobiles_URL =  "https://api.restful-api.dev"
+export  const Companies_URL =  "https://dummy-json.mock.beeceptor.com"
+export  const Products_URL =  "https://fake-store-api.mock.beeceptor.com"
 // export  const MyStore_URL =  "https://fakestoreapi.com"

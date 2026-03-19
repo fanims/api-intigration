@@ -6,15 +6,11 @@ const Navbar = () => {
         {name : "Home", link : "/"},
         {name : "About", link : "/about"},
         {name : "My Store", link : "/mystore"},
-        {name : "My Pets", link : "/mypets"},
         {name : "Checkout", link : "/checkout"}
     ]
   return (
     <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="text-2xl font-bold text-blue-600">
-                MyStore
-            </div>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-end items-center">
             <nav>
                 <ul className="flex space-x-6 text-gray-700 font-medium">
                     {navbar.map((item, index) => (
